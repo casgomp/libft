@@ -24,4 +24,6 @@ Key things learned from this project:
 
 ### Testing:
 
+- My own [testfiles](/test_libft).
+
 - war-machine, libftTester, libft-unit-test, fsoares. See [Francinette](https://github.com/WaRtr0/francinette-image).
