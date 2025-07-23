@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude
 NAME = libft.a
 
 OBJ_DIR = objs
-SRC_DIR = .
+SRC_DIR = src
 SUB_DIRS = ctype string memory alloc function fd linked_list printf gnl
 
 S_CTYPE			= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
@@ -31,7 +31,7 @@ S_PRINTF		= ft_printf.c ft_putchar_prnt.c ft_putstr_prnt.c \
 				  ft_putnbr_base_prnt.c ft_putnbr_base_prnt_address.c \
 				  ft_putnbr_base_prnt_address_pre.c
 
-S_GNL			= get_next_line.c get_next_line_utils.c
+S_GNL			= ft_get_next_line.c ft_get_next_line_utils.c
 
 O_CTYPE			= $(patsubst %.c, $(OBJ_DIR)/%.o, $(S_CTYPE))
 O_STRING		= $(patsubst %.c, $(OBJ_DIR)/%.o, $(S_STRING))
@@ -46,11 +46,11 @@ O_GNL			= $(patsubst %.c, $(OBJ_DIR)/%.o, $(S_GNL))
 OBJS =  $(O_CTYPE) $(O_STRING) $(O_MEMORY) $(O_ALLOC) $(O_FD) \
 		$(O_FUNCTION) $(O_LINKED_LIST) $(O_PRINTF) $(O_GNL)
 
-vpath %.c $(SUB_DIRS)
+vpath %.c $(addprefix $(SRC_DIR)/, $(SUB_DIRS))
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS)
+$(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 	@echo "Created $(NAME) with all object files."
 
@@ -63,10 +63,10 @@ $(OBJ_DIR)/%.o: %.c
 	@echo "Compiled $< -> $@"
 
 clean:
-	@rm -f $(NAME)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -rf $(OBJ_DIR)
+	@rm -f $(NAME)
 
 re: fclean all
 
