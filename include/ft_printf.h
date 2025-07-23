@@ -1,22 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pecastro <pecastro@student.42berlin.d      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 18:57:51 by pecastro          #+#    #+#             */
-/*   Updated: 2025/06/04 19:16:03 by pecastro         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdio.h>
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
 
 int	ft_printf(const char *format, ...);
 int	ft_putchar_prnt(int c, int *count_chars);
