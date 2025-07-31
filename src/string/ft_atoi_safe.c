@@ -6,17 +6,18 @@
 /*   By: pecastro <pecastro@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:01:19 by pecastro          #+#    #+#             */
-/*   Updated: 2025/07/31 10:30:50 by pecastro         ###   ########.fr       */
+/*   Updated: 2025/07/31 10:52:53 by pecastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_string.h"
 
-int	ft_atoi_safe(const char *nptr)
+int	ft_atoi_safe(const char *nptr, int *error)
 {
 	unsigned int	i;
 	int				sign;
 	long			result;
 
+	*error = 0;
 	sign = 1;
 	i = 0;
 	while (((nptr[i] >= '\t') && (nptr[i] <= '\r')) || (nptr[i] == ' '))
@@ -35,6 +36,6 @@ int	ft_atoi_safe(const char *nptr)
 	}
 	result = result * sign;
 	if (result < -2147483648 || result > 2147483647)
-		return (0);
+		return (*error = 1, 0);
 	return ((int)result);
 }
