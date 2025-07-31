@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_atoi_safe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pecastro <pecastro@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 12:05:20 by pecastro          #+#    #+#             */
-/*   Updated: 2025/07/24 12:05:22 by pecastro         ###   ########.fr       */
+/*   Created: 2025/07/24 12:01:19 by pecastro          #+#    #+#             */
+/*   Updated: 2025/07/31 10:30:50 by pecastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_alloc.h"
 #include "ft_string.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_atoi_safe(const char *nptr)
 {
-	char			*ptr;
 	unsigned int	i;
-	unsigned int	j;
+	int				sign;
+	long			result;
 
-	if (!s1 || !s2)
-		return (NULL);
-	ptr = malloc(sizeof(char) * ((ft_strlen((const char *)s1))
-				+ ft_strlen((const char *)s2) + 1));
-	if (!ptr)
-		return (NULL);
+	sign = 1;
 	i = 0;
-	while (s1[i])
+	while (((nptr[i] >= '\t') && (nptr[i] <= '\r')) || (nptr[i] == ' '))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		ptr[i] = s1[i];
+		if (nptr[i] == '-')
+			sign = -sign;
 		i ++;
 	}
-	j = 0;
-	while (s2[j])
+	result = 0;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		ptr[i + j] = s2[j];
-		j ++;
+		result = (result * 10) + (nptr[i] - '0');
+		i ++;
 	}
-	ptr[i + j] = '\0';
-	return (ptr);
+	result = result * sign;
+	if (result < -2147483648 || result > 2147483647)
+		return (0);
+	return ((int)result);
 }
