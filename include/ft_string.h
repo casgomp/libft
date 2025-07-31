@@ -6,13 +6,14 @@
 /*   By: pecastro <pecastro@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:52:16 by pecastro          #+#    #+#             */
-/*   Updated: 2025/07/31 11:23:46 by pecastro         ###   ########.fr       */
+/*   Updated: 2025/07/31 18:36:45 by pecastro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
 # include <stddef.h>
+# include <limits.h>
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
