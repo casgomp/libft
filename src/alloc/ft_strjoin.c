@@ -12,7 +12,7 @@
 #include "ft_alloc.h"
 #include "ft_string.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char*s1, const char *s2)
 {
 	char			*ptr;
 	unsigned int	i;
@@ -20,8 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	ptr = malloc(sizeof(char) * ((ft_strlen((const char *)s1))
-				+ ft_strlen((const char *)s2) + 1));
+	ptr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ptr)
 		return (NULL);
 	i = 0;
